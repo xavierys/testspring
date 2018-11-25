@@ -2,9 +2,15 @@ package com.wiley.beginning.spring.ch2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
+
+    
+    public AccountServiceImpl(AccountDao accountDao) {
+	super();
+	this.accountDao = accountDao;
+    }
 
     @Override
     public void transferMoney(long sourceAccountId, long targetAccountId, double amount) {
@@ -28,7 +34,7 @@ public class AccountServiceImpl implements AccountService {
 	return accountDao.find(accountId);
     }
 
-    @Autowired
+    
     public void setAccountDao(AccountDao accountDao) {
 	this.accountDao = accountDao;
     }

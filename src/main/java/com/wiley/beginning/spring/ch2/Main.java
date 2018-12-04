@@ -1,15 +1,13 @@
 package com.wiley.beginning.spring.ch2;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-//	AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Ch2BeanConfiguration.class);
-	ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/com/wiley/beginning/spring/ch2/ch2-beans.xml");
-	
-	
-	AccountService accountService = applicationContext.getBean("accountService", AccountService.class);
+	AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
+		Ch2BeanConfiguration.class);
+
+	AccountService accountService = applicationContext.getBean("accountService", AccountServiceImpl.class);
 	
 	System.out.println("Before money transfer");
 	System.out.println("Account 1 balance:"+ accountService.getAccount(1).getBalance());
@@ -20,6 +18,7 @@ public class Main {
 	System.out.println("After money transfer");
 	System.out.println("Account 1 balance:"+ accountService.getAccount(1).getBalance());
 	System.out.println("Account 2 balance:"+ accountService.getAccount(2).getBalance());
-	
+
+	applicationContext.close();
     }
 }

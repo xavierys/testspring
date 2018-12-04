@@ -6,10 +6,13 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
 
-    
     public AccountServiceImpl(AccountDao accountDao) {
 	super();
 	this.accountDao = accountDao;
+    }
+
+    public AccountServiceImpl() {
+	// TODO Auto-generated constructor stub
     }
 
     @Override
